@@ -22,6 +22,24 @@ APP.setup = ()=>{
     ATON.FE.uiAddButtonVR("idTopToolbar");
     //ATON.FE.uiAddButtonDeviceOrientation("idTopToolbar");
 
+    $("#idTopToolbar").append("<div id='btnSwitchA' class='atonBTN atonBTN-text'>Archeologico</div>");
+    $("#idTopToolbar").append("<div id='btnSwitchT' class='atonBTN atonBTN-text'>Tipologico</div>");
+
+    $("#btnSwitchA").click(()=>{
+        let N = ATON.getSceneNode("Ipotesi da dato archeologico");
+        if (N) N.toggle();
+
+        if (N.visible) $("#btnSwitchA").addClass("switchedON");
+        else $("#btnSwitchA").removeClass("switchedON");
+    });
+    $("#btnSwitchT").click(()=>{
+        let N = ATON.getSceneNode("Ipotesi da confronto tipologico");
+        if (N) N.toggle();
+
+        if (N.visible) $("#btnSwitchA").addClass("switchedON");
+        else $("#btnSwitchA").removeClass("switchedON");
+    });
+
     ATON.FE.uiAddButtonInfo("idBottomRToolbar");
     ATON.FE.uiAddButton("idBottomToolbar", "prev", APP.povPrev, "Previous Viewpoint" );
     ATON.FE.uiAddButtonHome("idBottomToolbar");
@@ -31,6 +49,10 @@ APP.setup = ()=>{
         if (ATON.SceneHub.getDescription()) ATON.FE.popupSceneInfo();
 
         APP.updatePOVs();
+    });
+
+    ATON.on("AllNodeRequestsCompleted", ()=>{
+        ATON.SUI.showSelector( false );
     });
 
 	ATON.on("Tap", ()=>{
