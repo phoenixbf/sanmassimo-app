@@ -15,6 +15,8 @@ APP.setup = ()=>{
 
     ATON.FE.loadSceneID(sid);
 
+    ATON.SUI.showSelector( false );
+
     // UI
     ATON.FE.uiAddButtonFullScreen("idTopToolbar");
     ATON.FE.uiAddButtonVR("idTopToolbar");
@@ -59,9 +61,7 @@ APP.popupSemDescription = (semid)=>{
     let descr = APP.getHTMLDescriptionFromSemNode(semid);
     if (descr === undefined) return;
 
-    let htmlcontent = "<div class='atonPopupTitle'>";
-    htmlcontent += semid+"</div>";
-
+    let htmlcontent = "<div class='atonPopupTitle'>"+semid+"</div>";
     htmlcontent += "<div class='atonPopupDescriptionContainer'>"+descr+"</div>";
 
     if ( !ATON.FE.popupShow(htmlcontent, "atonPopupCompact") ) return;
