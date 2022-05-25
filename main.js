@@ -36,8 +36,8 @@ APP.setup = ()=>{
         let N = ATON.getSceneNode("Ipotesi da confronto tipologico");
         if (N) N.toggle();
 
-        if (N.visible) $("#btnSwitchA").addClass("switchedON");
-        else $("#btnSwitchA").removeClass("switchedON");
+        if (N.visible) $("#btnSwitchT").addClass("switchedON");
+        else $("#btnSwitchT").removeClass("switchedON");
     });
 
     ATON.FE.uiAddButtonInfo("idBottomRToolbar");
